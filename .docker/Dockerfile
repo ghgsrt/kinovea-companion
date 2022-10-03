@@ -1,9 +1,7 @@
-FROM ubuntu:latest
+FROM alpine:latest
 
-RUN apt-get update \
-    && apt-get install -y sudo nodejs npm golang
-
-RUN go install github.com/wailsapp/wails/v2/cmd/wails@latest
+RUN apk add --no-cache nodejs-current npm golang \
+    && go install github.com/wailsapp/wails/v2/cmd/wails@latest
 
 RUN useradd -s /bin/bash -m vscode \
     && groupadd docker \

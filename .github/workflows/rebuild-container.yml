@@ -1,0 +1,26 @@
+name: 'build'
+on: # rebuild any master branch changes
+  push:
+    branches: [ "master" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout (GitHub)
+        uses: actions/checkout@v2
+
+      - name: Login to GitHub Container Registry
+        uses: docker/login-action@v1
+        with:
+          registry: ghcr.io
+          username: ${{ github.repository_owner }}
+          password: ${{ secrets.GHCR_PASS }}
+
+      - name: Build and run dev container task
+        uses: devcontainers/ci@v0.2
+        with:
+          imageName: ghcr.io/ghgsrt/kinovea-companion
+          runCmd: |
+            make install-packages
+            make ci-build

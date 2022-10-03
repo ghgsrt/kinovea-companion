@@ -7,7 +7,7 @@
 
 	function greet(): void {
 		Greet(name).then((result) => (resultText = result));
-	} 
+	}
 </script>
 
 <main>

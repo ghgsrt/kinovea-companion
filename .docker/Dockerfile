@@ -1,10 +1,8 @@
 FROM ubuntu:latest
 
 RUN apt-get update \
-    && apt-get install -y sudo git-core nodejs
+    && apt-get install -y sudo nodejs npm golang
 
-
-FROM golang
 RUN go install github.com/wailsapp/wails/v2/cmd/wails@latest
 
 RUN useradd -s /bin/bash -m vscode \

@@ -1,6 +1,9 @@
-# syntax=docker/dockerfile:1
+FROM ubuntu:latest
 
-FROM node as dev-envs
+RUN apt-get update \
+    && apt-get install -y sudo git-core nodejs golang
+
+RUN go install github.com/wailsapp/wails/v2/cmd/wails@latest
 
 RUN useradd -s /bin/bash -m vscode \
     && groupadd docker \

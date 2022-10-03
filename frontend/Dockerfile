@@ -1,5 +1,5 @@
 # syntax=docker/dockerfile:1
-FROM node 
+FROM node as dev-envs
 # CMD ["go", "install", "github.com/wailsapp/wails/v2/cmd/wails@latest"]
 
 RUN useradd -s /bin/bash -m vscode \

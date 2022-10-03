@@ -1,6 +1,6 @@
 # syntax=docker/dockerfile:1
 
-FROM golang 
+FROM golang as dev-envs
 RUN go install github.com/wailsapp/wails/v2/cmd/wails@latest
 
 RUN useradd -s /bin/bash -m vscode \

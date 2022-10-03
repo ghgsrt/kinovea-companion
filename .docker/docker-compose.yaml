@@ -1,0 +1,11 @@
+services:
+  backend:
+    build:
+      context: .
+      target: dev-envs
+  frontend:
+    build:
+      context: frontend
+      target: dev-envs
+volumes:
+  - .:/code

@@ -1,0 +1,12 @@
+{
+  "name": "kinovea-companion",
+  "outputfilename": "kinovea-companion",
+  "frontend:install": "npm install",
+  "frontend:build": "npm run build",
+  "frontend:dev:watcher": "npm run dev",
+  "frontend:dev:serverUrl": "auto",
+  "author": {
+    "name": "ghgsrt",
+    "email": "ajb7366@psu.edu"
+  }
+}

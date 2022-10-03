@@ -1,6 +1,6 @@
 # syntax=docker/dockerfile:1
-FROM golang 
-CMD ["go", "install", "github.com/wailsapp/wails/v2/cmd/wails@latest"]
+FROM node 
+# CMD ["go", "install", "github.com/wailsapp/wails/v2/cmd/wails@latest"]
 
 RUN useradd -s /bin/bash -m vscode \
     && groupadd docker \

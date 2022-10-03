@@ -2,7 +2,11 @@
 
 ## About
 
-This is the official Wails Svelte-TS template.
+TODO
+
+## Development Setup
+
+TODO
 
 ## Live Development
 

@@ -4,4 +4,8 @@ services:
       context: .
       target: dev-envs
   frontend:
-    image: node
+    build:
+      context: frontend
+      target: dev-envs
+    links:
+      - backend

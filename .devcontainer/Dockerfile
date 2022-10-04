@@ -1,8 +1,22 @@
-ARG VARIANT=16-bullseye
-FROM mcr.microsoft.com/vscode/devcontainers/typescript-node:0-${VARIANT}
+# ARG VARIANT=16-bullseye
+# FROM mcr.microsoft.com/vscode/devcontainers/typescript-node:0-${VARIANT}
 
-# RUN su node -c "npm install -g <your-package-list -here>"
+# # RUN su node -c "npm install -g <your-package-list -here>"
 
-COPY --from=golang:1.13-alpine /usr/local/go/ /usr/local/go/
+# COPY --from=golang:1.13-alpine /usr/local/go/ /usr/local/go/
  
 # ENV PATH="/usr/local/go/bin:${PATH}"
+
+FROM golang:1.13-alpine
+
+ENV USER=dev
+ENV GROUP=docker
+
+RUN addgroup --system "$GROUP" \
+    && adduser --system "$USER" --ingroup "$GROUP" 
+
+USER "$USER"
+
+RUN apk add --no-cache nodejs-current npm
+
+ENTRYPOINT [ "sleep", "infinity" ]

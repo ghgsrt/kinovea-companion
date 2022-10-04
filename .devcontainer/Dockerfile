@@ -1,10 +1,5 @@
-FROM golang as go
-COPY --from=go /usr/local/go /usr/local/go
-ENV GOPATH=/go
-ENV PATH=$GOPATH/bin:/usr/local/go/bin:$PATH \
-    CGO_ENABLED=0 \
-    GO111MODULE=on
-
+FROM golang
+RUN go get -u -v golang.org/x/tools/cmd/gopls 2>&1
 
 ARG VARIANT=16-bullseye
 FROM mcr.microsoft.com/vscode/devcontainers/typescript-node:0-${VARIANT}

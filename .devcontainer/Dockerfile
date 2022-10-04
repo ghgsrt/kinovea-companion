@@ -9,7 +9,8 @@
 
 FROM golang:1.13-alpine
 
-RUN apk add --no-cache bash git nodejs npm
+RUN apk add --no-cache bash git nodejs npm \
+    && sed -i -e "s/bin\/ash/bin\/bash/" /etc/passwd
 
 ARG USER=dev
 ARG GROUP=docker
@@ -18,8 +19,6 @@ RUN addgroup --system ${GROUP} \
     && adduser --system ${USER} --ingroup ${GROUP} 
 
 USER ${USER}
-
-RUN sed -i -e "s/bin\/ash/bin\/bash/" /etc/passwd
 
 # RUN apk add --no-cache bash
 

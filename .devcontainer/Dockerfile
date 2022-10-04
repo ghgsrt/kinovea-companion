@@ -11,11 +11,11 @@ FROM golang:1.13-alpine
 
 RUN apk add --no-cache git nodejs-current npm
 
-ARG USER=dev
-ARG GROUP=docker
+ARG USER  = dev
+ARG GROUP = docker
 
 RUN addgroup --system ${GROUP} \
-    && adduser --system --no-password ${USER} --ingroup ${GROUP} 
+    && adduser --system -D ${USER} --ingroup ${GROUP} 
 
 # RUN sed -i -e "s/bin\/ash/bin\/bash/" /etc/passwd
 

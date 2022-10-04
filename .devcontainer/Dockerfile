@@ -11,11 +11,11 @@ FROM golang:1.13-alpine
 
 RUN apk add --no-cache bash git nodejs-current npm
 
-ENV USER=dev
-ENV GROUP=docker
+ARG USER=dev
+ARG GROUP=docker
 
-RUN addgroup --system "$GROUP" \
-    && adduser --system "$USER" --ingroup "$GROUP" 
+RUN addgroup --system ${GROUP} \
+    && adduser --system ${USER} --ingroup ${GROUP} 
 
 USER "$USER"
 

@@ -17,17 +17,8 @@ jobs:
           registry: ghcr.io
           username: ${{ github.repository_owner }}
           password: ${{ secrets.GHCR_PASS }}
-          
-#       - name: Build and Push Container Image
-#         uses: docker/build-push-action@v2
-      - name: devcontainers-ci
+        
+      - name: Build and Push Container Image
         uses: devcontainers/ci@v0.2.1900000118
         with:
-          workspaceFolder: .
           imageName: ghcr.io/${{ github.repository }}
-          push: true
-          runCmd: devcontainer build
-#           context: .
-#           push: true
-#           tags: ghcr.io/${{ github.repository }}:${{ github.sha }}
-          

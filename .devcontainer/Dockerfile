@@ -9,17 +9,21 @@
 
 FROM golang:1.13-alpine
 
-RUN apk add --no-cache bash git nodejs npm \
-    && sed -i -e "s/bin\/ash/bin\/bash/" /etc/passwd
-
 ARG USER=dev
 ARG GROUP=docker
+ENV HOME /home/$USER
 
-RUN addgroup --system ${GROUP} \
-    && adduser --system ${USER} --ingroup ${GROUP} 
+RUN apk add --no-cache sudo git nodejs npm
+    # && sed -i -e "s/bin\/ash/bin\/bash/" /etc/passwd
+
+# RUN addgroup --system ${GROUP} \
+#     && adduser --system ${USER} --ingroup ${GROUP} 
+RUN adduser -D $USER \
+        && echo "$USER ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/$USER \
+        && chmod 0440 /etc/sudoers.d/$USER
 
 USER ${USER}
 
-# RUN apk add --no-cache bash
+RUN apk add --no-cache bash
 
 # ENTRYPOINT [ "sleep", "infinity" ]

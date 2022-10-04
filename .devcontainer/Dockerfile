@@ -13,7 +13,7 @@ ARG USER=dev
 ARG GROUP=docker
 ENV HOME /home/$USER
 
-RUN apk add --no-cache sudo git nodejs npm
+RUN apk add --no-cache sudo bash git nodejs npm
     # && sed -i -e "s/bin\/ash/bin\/bash/" /etc/passwd
 
 # RUN addgroup --system ${GROUP} \
@@ -24,6 +24,6 @@ RUN adduser -D $USER \
 
 USER ${USER}
 
-RUN apk add --no-cache bash
+# RUN apk add --no-cache bash
 
 # ENTRYPOINT [ "sleep", "infinity" ]

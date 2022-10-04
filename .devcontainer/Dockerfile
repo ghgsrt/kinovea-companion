@@ -17,6 +17,6 @@ ARG GROUP=docker
 RUN addgroup --system ${GROUP} \
     && adduser --system ${USER} --ingroup ${GROUP} 
 
-USER "$USER"
+USER ${USER}
 
 ENTRYPOINT [ "sleep", "infinity" ]

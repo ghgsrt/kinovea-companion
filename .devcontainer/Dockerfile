@@ -15,7 +15,7 @@ ARG USER  = dev
 ARG GROUP = docker
 
 RUN addgroup --system ${GROUP} \
-    && adduser --system -D ${USER} --ingroup ${GROUP} 
+    && adduser -D --system ${USER} --ingroup ${GROUP} 
 
 # RUN sed -i -e "s/bin\/ash/bin\/bash/" /etc/passwd
 

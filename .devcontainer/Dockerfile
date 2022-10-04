@@ -9,6 +9,8 @@
 
 FROM golang:1.13-alpine
 
+RUN apk add --no-cache nodejs-current npm
+
 ENV USER=dev
 ENV GROUP=docker
 
@@ -16,7 +18,5 @@ RUN addgroup --system "$GROUP" \
     && adduser --system "$USER" --ingroup "$GROUP" 
 
 USER "$USER"
-
-RUN apk add --no-cache nodejs-current npm
 
 ENTRYPOINT [ "sleep", "infinity" ]

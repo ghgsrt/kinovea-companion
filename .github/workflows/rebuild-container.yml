@@ -23,10 +23,10 @@ jobs:
       - name: devcontainers-ci
         uses: devcontainers/ci@v0.2.1900000118
         with:
+          workspaceFolder: .
           imageName: ghcr.io/${{ github.repository }}
-          runCmd: |
-            make install-packages
-            make ci-build
+          push: true
+          runCmd: devcontainer build
 #           context: .
 #           push: true
 #           tags: ghcr.io/${{ github.repository }}:${{ github.sha }}

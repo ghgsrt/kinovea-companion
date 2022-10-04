@@ -1,8 +1,9 @@
 name: 'build'
-on: # rebuild any master branch changes
+on: # rebuild any dev-container changes
   push:
-    branches: [ "master" ]
-
+    paths: 
+      - .devcontainer/**
+    
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -17,10 +18,10 @@ jobs:
           username: ${{ github.repository_owner }}
           password: ${{ secrets.GHCR_PASS }}
 
-      - name: Build and run dev container task
-        uses: devcontainers/ci@v0.2
+      - name: Build and Push Container Image
+        uses: docker/build-push-action@v2
         with:
-          imageName: ghcr.io/ghgsrt/kinovea-companion
-          runCmd: |
-            make install-packages
-            make ci-build
+          context: .
+          push: true
+          tags: gchr.io/${{ github.repository }}:${{ github.sha }}
+          

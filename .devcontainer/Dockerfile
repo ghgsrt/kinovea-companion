@@ -9,7 +9,7 @@
 
 FROM golang:1.13-alpine
 
-RUN apk add --no-cache bash git github-cli nodejs-current npm
+RUN apk add --no-cache bash git nodejs-current npm
 
 ENV USER=dev
 ENV GROUP=docker

@@ -19,6 +19,4 @@ RUN addgroup --system ${GROUP} \
 
 USER ${USER}
 
-RUN apk add --no-cache bash
-
 # ENTRYPOINT [ "sleep", "infinity" ]

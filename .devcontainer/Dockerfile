@@ -19,4 +19,4 @@ RUN addgroup --system ${GROUP} \
 
 USER ${USER}
 
-ENTRYPOINT [ "sleep", "infinity" ]
+# ENTRYPOINT [ "sleep", "infinity" ]

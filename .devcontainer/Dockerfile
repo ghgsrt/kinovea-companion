@@ -15,11 +15,11 @@ ARG USER=dev
 ARG GROUP=docker
 
 RUN addgroup --system ${GROUP} \
-    && adduser --system --disabled-password --no-create-home ${USER} --ingroup ${GROUP} 
-
-# RUN sed -i -e "s/bin\/ash/bin\/bash/" /etc/passwd
+    && adduser --system ${USER} --ingroup ${GROUP} 
 
 USER ${USER}
+
+RUN sed -i -e "s/bin\/ash/bin\/bash/" /etc/passwd
 
 # RUN apk add --no-cache bash
 

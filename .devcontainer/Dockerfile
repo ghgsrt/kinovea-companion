@@ -9,7 +9,8 @@
 
 FROM golang:1.13-alpine
 
-RUN apk add --no-cache git nodejs-current npm
+RUN apk add --no-cache bash git nodejs-current npm
+RUN sed -i -e "s/bin\/ash/bin\/bash/" /etc/passwd
 
 ARG USER=dev
 ARG GROUP=docker

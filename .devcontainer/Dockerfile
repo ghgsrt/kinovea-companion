@@ -7,7 +7,7 @@ RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
     && apt-get -y install --no-install-recommends wget software-properties-common apt-transport-https && apt-get update \
     # && add-apt-repository ppa:longsleep/golang-backports && apt-get update \
     # && apt-get install golang-1.18
-    && wget https://go.dev/dl/go1.19.linux-amd64.tar.gz \
+    && wget https://go.dev/dl/go1.19.2.linux-amd64.tar.gz \
     && sudo tar -zxvf go1.19.linux-amd64.tar.gz -C /usr/local/ 
     # && sudo mv go /usr/local \ 
     # && export GOROOT=/usr/local/go \

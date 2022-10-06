@@ -4,7 +4,12 @@ FROM mcr.microsoft.com/vscode/devcontainers/typescript-node:0-${VARIANT}
 
 # [Optional] Uncomment this section to install additional OS packages.
 RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
-    && apt-get -y install --no-install-recommends golang-go
+    && wget https://go.dev/dl/go1.19.linux-amd64.tar.gz \
+    && sudo mv go /usr/local \ 
+    && export GOROOT=/usr/local/go \
+    && export GOPATH=$HOME/workspaces/kinovea-companion \
+    && export PATH=$GOPATH/bin:$GOROOT/bin:$PATH
+    # && apt-get -y install --no-install-recommends golang-go
 
 # [Optional] Uncomment if you want to install an additional version of node using nvm
 # ARG EXTRA_NODE_VERSION=10

@@ -6,10 +6,11 @@ FROM mcr.microsoft.com/vscode/devcontainers/typescript-node:0-${VARIANT}
 RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
     && wget https://go.dev/dl/go1.19.linux-amd64.tar.gz \
     && sudo tar -xvf go1.19.linux-amd64.tar.gz \
-    && sudo mv go /usr/local \ 
-    && export GOROOT=/usr/local/go \
-    && export GOPATH=$HOME/workspaces/kinovea-companion \
-    && export PATH=$GOPATH/bin:$GOROOT/bin:$PATH
+    && sudo mv go /usr/local 
+
+ENV GOROOT /usr/local/go
+ENV GOPATH $HOME/workspaces/kinovea-companion
+ENV PATH $GOPATH/bin:$GOROOT/bin:$PATH
     # && apt-get -y install --no-install-recommends golang-go
 
 # [Optional] Uncomment if you want to install an additional version of node using nvm

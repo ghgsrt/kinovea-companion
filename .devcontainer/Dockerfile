@@ -4,9 +4,9 @@ FROM mcr.microsoft.com/vscode/devcontainers/typescript-node:0-${VARIANT}
 
 # [Optional] Uncomment this section to install additional OS packages.
 RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
-    && add-apt-repository ppa:longsleep/golang-backports \
-    && apt update \
-    && apt install golang-1.18
+    && sudo add-apt-repository ppa:longsleep/golang-backports \
+    && sudo apt update \
+    && sudo apt install golang-1.18
     # && wget https://go.dev/dl/go1.19.linux-amd64.tar.gz \
     # && sudo tar -xvf go1.19.linux-amd64.tar.gz \
     # && sudo mv go /usr/local \ 

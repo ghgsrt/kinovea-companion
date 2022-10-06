@@ -9,8 +9,8 @@ RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
     && sudo mv go /usr/local 
 
 ENV GOROOT /usr/local/go
-ENV GOPATH $HOME/workspaces
-ENV PATH $GOPATH/bin:$GOROOT/bin:$PATH
+# ENV GOPATH $HOME/workspaces
+# ENV PATH $GOPATH/bin:$GOROOT/bin:$PATH
     # && apt-get -y install --no-install-recommends golang-go
 
 # [Optional] Uncomment if you want to install an additional version of node using nvm

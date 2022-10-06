@@ -16,7 +16,10 @@ RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
     # && source ~/.bashrc
     # && apt-get -y install --no-install-recommends curl && apt-get update && curl 
 
-ENV PATH $PATH:/usr/local/go/bin
+ENV GOROOT /usr/local/go
+ENV GOPATH /home/node/go
+ENV PATH $GOPATH/bin:$GOROOT/bin:$PATH
+# ENV PATH $PATH:/usr/local/go/bin
 
 RUN go install -v golang.org/x/tools/gopls@latest \
     && go install github.com/wailsapp/wails/v2/cmd/wails@latest 

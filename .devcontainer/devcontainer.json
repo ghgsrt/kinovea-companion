@@ -26,10 +26,10 @@
 	// "forwardPorts": [],
 
 	// Use 'postCreateCommand' to run commands after the container is created.
-	// "postCreateCommand": "yarn install",
+	"postCreateCommand": "bash scripts/postCreate.sh",
 
 	// Comment out to connect as root instead. More info: https://aka.ms/vscode-remote/containers/non-root.
-	"remoteUser": "dev"
+	"remoteUser": "node"
 	// "features": {
 	// 	"git": "latest",
 	// 	"github-cli": "latest",

@@ -9,7 +9,7 @@ RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
     && sudo mv go /usr/local 
 
 ENV GOROOT /usr/local/go
-ENV GOPATH $HOME/workspaces/kinovea-companion
+ENV GOPATH $HOME/go
 ENV PATH $GOPATH/bin:$GOROOT/bin:$PATH
     # && apt-get -y install --no-install-recommends golang-go
 

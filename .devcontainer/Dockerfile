@@ -8,7 +8,7 @@ RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
     # && add-apt-repository ppa:longsleep/golang-backports && apt-get update \
     # && apt-get install golang-1.18
     && wget https://go.dev/dl/go1.19.2.linux-amd64.tar.gz \
-    && sudo tar -zxvf go1.19.2.linux-amd64.tar.gz -C /usr/local/ 
+    && rm -rf /usr/local/go && tar -C /usr/local -xzf go1.19.2.linux-amd64.tar.gz
     # && sudo mv go /usr/local \ 
     # && export GOROOT=/usr/local/go \
     # && export GOPATH=$HOME/go \
@@ -16,7 +16,7 @@ RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
     # && source ~/.bashrc
     # && apt-get -y install --no-install-recommends curl && apt-get update && curl 
 
-ENV PATH /usr/local/go/bin:$PATH
+ENV PATH $PATH:/usr/local/go/bin
 
 # [Optional] Uncomment if you want to install an additional version of node using nvm
 # ARG EXTRA_NODE_VERSION=10

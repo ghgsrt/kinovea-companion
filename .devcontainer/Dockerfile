@@ -4,7 +4,7 @@ FROM mcr.microsoft.com/vscode/devcontainers/typescript-node:0-${VARIANT}
 
 # [Optional] Uncomment this section to install additional OS packages.
 RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
-    && snap install go
+    && sudo snap install go
     # && wget https://go.dev/dl/go1.19.linux-amd64.tar.gz \
     # && sudo tar -xvf go1.19.linux-amd64.tar.gz \
     # && sudo mv go /usr/local \ 

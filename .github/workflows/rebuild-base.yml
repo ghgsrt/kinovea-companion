@@ -2,7 +2,7 @@ name: Rebuild Base Image
 on: # rebuild on any .devcontainer changes
   push:
     paths: 
-      - .devcontainer/base.Dockerfile
+      - .devcontainer/build/base.Dockerfile
     
 jobs:
   build:

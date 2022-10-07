@@ -27,6 +27,8 @@ ENV PATH ${GOPATH}/bin:${GOROOT}/bin:${PATH}
 
 RUN go install -v golang.org/x/tools/gopls@latest \
     && go install github.com/wailsapp/wails/v2/cmd/wails@latest
+
+ENV DISPLAY 127.0.0.1:0.0
 # groupadd --system --gid $USER_GID $USERNAME \
     # && useradd --system --uid $USER_UID --gid $USER_GID -m $USERNAME \
 

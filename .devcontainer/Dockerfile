@@ -4,11 +4,11 @@ FROM mcr.microsoft.com/vscode/devcontainers/typescript-node:0-${VARIANT}
 
 # [Optional] Uncomment this section to install additional OS packages.
 RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
-    && apt-get -y install --no-install-recommends wget software-properties-common apt-transport-https && apt-get update \
+    && apt-get -y install --no-install-recommends wget software-properties-common apt-transport-https libgtk-3-dev libwebkit2gtk-4.0-dev nsis docker.io && apt-get update \
     && wget https://go.dev/dl/go1.19.2.linux-amd64.tar.gz \
     && rm -rf /usr/local/go && tar -C /usr/local -xzf go1.19.2.linux-amd64.tar.gz
 
-ARG USERNAME=node
+ARG USERNAME=dev
 ARG USER_UID=1000
 ARG USER_GID=$USER_UID
 RUN groupmod --gid $USER_GID $USERNAME \

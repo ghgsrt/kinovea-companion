@@ -4,7 +4,7 @@ FROM mcr.microsoft.com/vscode/devcontainers/typescript-node:0-${VARIANT}
 
 # [Optional] Uncomment this section to install additional OS packages.
 RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
-    && apt-get install -y --no-install-recommends wget software-properties-common apt-transport-https libgtk-3-dev libwebkit2gtk-4.0-dev nsis docker.io firefox-esr && apt-get update \
+    && apt-get install -y --no-install-recommends wget software-properties-common apt-transport-https libgtk-3-dev libwebkit2gtk-4.0-dev nsis docker.io mesa-utils libgl1-mesa-glx && apt-get update \
     && wget https://go.dev/dl/go1.19.2.linux-amd64.tar.gz \
     && rm -rf /usr/local/go && tar -C /usr/local -xzf go1.19.2.linux-amd64.tar.gz
 

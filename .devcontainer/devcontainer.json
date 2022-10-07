@@ -13,7 +13,8 @@
 		"cacheFrom": "ghcr.io/ghgsrt/kinovea-companion"
 	},
 	"containerEnv": {
-		"DISPLAY": "host.docker.internal:0.0"
+		"DISPLAY": "host.docker.internal:0.0",
+		"NO_AT_BRIDGE": "1"
 	},
 
 	// Configure tool-specific properties.

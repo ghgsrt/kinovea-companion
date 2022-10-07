@@ -19,10 +19,10 @@ jobs:
           password: ${{ secrets.GHCR_PASS }}
         
       - name: Build Base Image
-        run: docker build .devcontainer/build --file .devcontainer/build/base.Dockerfile --tag gobase 
+        run: docker build . --file .devcontainer/build/base.Dockerfile --tag gobase 
         
       - name: Push Base Image
-        run: docker push ${{ github.repository_owner }}/gobase
+        run: docker push ghcr.io/${{ github.repository_owner }}/gobase
 # name: Rebuild Dev-Env Image
 # on: # rebuild on any .devcontainer changes
 #   push:

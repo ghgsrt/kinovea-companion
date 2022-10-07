@@ -17,7 +17,9 @@ ARG USER_GID=${USER_UID}
 RUN usermod --uid ${USER_UID} --login ${USERNAME} --home /home/${USERNAME} --move-home ${OLD_USERN} \
     && groupmod --gid ${USER_GID} --new-name ${USERNAME} ${OLD_USERN} \
     && chown -R ${USER_UID}:${USER_GID} /home/${USERNAME} \
-    && chmod -R u+rwx /home/${USERNAME}
+    && chmod -R u+rwx /home/${USERNAME} \
+    && echo "${USERNAME} ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/${USERNAME} \
+    && chmod 0440 /etc/sudoers.d/${USERNAME}
 
 USER ${USERNAME}
 

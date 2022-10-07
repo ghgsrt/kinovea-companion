@@ -1,5 +1,5 @@
 name: Rebuild Container Image
-on: # rebuild on any .devcontainer changes
+on: # rebuild on Dockerfile changes
   push:
     paths: 
       - .devcontainer/build/Dockerfile
@@ -19,7 +19,7 @@ jobs:
           password: ${{ secrets.GHCR_PASS }}
         
       - name: Build Container Image
-        run: docker build . --file Dockerfile --tag kc-devenv 
+        run: docker build . --file .devcontainer/build/Dockerfile --tag ghcr.io/${{ github.repository_owner }}/kc-devenv 
         
       - name: Push Container Image
-        run: docker push ${{ github.repository_owner }}/kc-devenv
+        run: docker push ghcr.io/${{ github.repository_owner }}/kc-devenv

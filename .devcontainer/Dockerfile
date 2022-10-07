@@ -16,6 +16,15 @@ RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
     # && source ~/.bashrc
     # && apt-get -y install --no-install-recommends curl && apt-get update && curl 
 
+
+ARG USERNAME=node
+ARG USER_UID=1000
+ARG USER_GID=$USER_UID
+
+RUN groupmod --gid $USER_GID $USERNAME \
+    && usermod --uid $USER_UID --gid $USER_GID $USERNAME \
+    && chown -R $USER_UID:$USER_GID /home/$USERNAME
+
 ENV GOROOT /usr/local/go
 ENV GOPATH /home/node/go
 ENV PATH $GOPATH/bin:$GOROOT/bin:$PATH

@@ -20,7 +20,7 @@ RUN groupadd --system --gid $USER_GID $USERNAME \
 USER $USERNAME
 
 ENV GOROOT /usr/local/go
-ENV GOPATH /home/node/go
+ENV GOPATH /home/$USERNAME/go
 ENV PATH $GOPATH/bin:$GOROOT/bin:$PATH
 
 RUN go install -v golang.org/x/tools/gopls@latest \

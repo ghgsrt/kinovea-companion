@@ -5,8 +5,9 @@ FROM mcr.microsoft.com/vscode/devcontainers/typescript-node:0-${VARIANT}
 # [Optional] Uncomment this section to install additional OS packages.
 RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
     && apt-get -y install --no-install-recommends wget software-properties-common apt-transport-https libgtk-3-dev libwebkit2gtk-4.0-dev nsis docker.io && apt-get update \
-    && wget https://go.dev/dl/go1.19.2.linux-amd64.tar.gz \
-    && rm -rf /usr/local/go && tar -C /usr/local -xzf go1.19.2.linux-amd64.tar.gz
+    && wget https://go.dev/dl/go1.19.2.linux-amd64.tar.gz https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb \
+    && rm -rf /usr/local/go && tar -C /usr/local -xzf go1.19.2.linux-amd64.tar.gz \
+    && apt-get install ./google-chrome-stable_current_amd64.deb
 
 ARG OLD_USERN=node
 ARG USERNAME=cock

@@ -54,8 +54,7 @@
 	"features": {
 		"desktop-lite": {
 			"password":  "",
-			"webPort": "8008",
-			"vncPort": "34115"
+			"webPort": "34115"
 		}
 	// 	// 	"git": "latest",
 	// 	// 	"github-cli": "latest",

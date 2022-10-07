@@ -50,11 +50,16 @@
 	"postCreateCommand": "bash ./.devcontainer/scripts/postCreate.sh",
 
 	// Comment out to connect as root instead. More info: https://aka.ms/vscode-remote/containers/non-root.
-	"remoteUser": "cock"
-	// "features": {
+	"remoteUser": "cock",
+	"features": {
+		"desktop-lite": {
+			"password":  "",
+			"webPort": "8008",
+			"vncPort": "34115"
+		}
 	// 	// 	"git": "latest",
 	// 	// 	"github-cli": "latest",
 	// 	// 	// "golang": "latest",
 	// 	"powershell": "latest"
-	// }
+	}
 }

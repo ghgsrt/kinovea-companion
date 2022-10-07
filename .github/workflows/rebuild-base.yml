@@ -19,7 +19,7 @@ jobs:
           password: ${{ secrets.GHCR_PASS }}
         
       - name: Build Base Image
-        run: docker build . --file gobase.Dockerfile --tag gobase 
+        run: docker build . --file base.Dockerfile --tag gobase 
         
       - name: Push Base Image
         run: docker push ${{ github.repository_owner }}/gobase

@@ -2,27 +2,33 @@
 ARG VARIANT=16-bullseye
 FROM mcr.microsoft.com/vscode/devcontainers/typescript-node:0-${VARIANT}
 
+ARG OLD_USERN=node
+ARG USERNAME=cock
+ARG USER_UID=1337
+ARG GROUP_NAME=balls
+ARG USER_GID=${USER_UID}
+
+ENV GOROOT /usr/local/go
+ENV GOPATH /home/${USERNAME}/go
+ENV PATH ${GOPATH}/bin:${GOROOT}/bin:${PATH}
+
 # [Optional] Uncomment this section to install additional OS packages.
 RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
     && apt-get -y install --no-install-recommends wget software-properties-common apt-transport-https libgtk-3-dev libwebkit2gtk-4.0-dev nsis docker.io && apt-get update \
     && wget https://go.dev/dl/go1.19.2.linux-amd64.tar.gz \
-    && rm -rf /usr/local/go && tar -C /usr/local -xzf go1.19.2.linux-amd64.tar.gz
-
-ARG USERNAME=dev
-ARG USER_UID=1337
-ARG USER_GID=$USER_UID
-RUN groupadd --system --gid $USER_GID $USERNAME \
-    && useradd --system --uid $USER_UID --gid $USER_GID -m $USERNAME \
-    && chown -R $USER_UID:$USER_GID /home/$USERNAME \
-    && chmod -R u+rx /home/$USERNAME
-USER $USERNAME
-
-ENV GOROOT /usr/local/go
-ENV GOPATH /home/$USERNAME/go
-ENV PATH $GOPATH/bin:$GOROOT/bin:$PATH
-
-RUN go install -v golang.org/x/tools/gopls@latest \
+    && rm -rf /usr/local/go && tar -C /usr/local -xzf go1.19.2.linux-amd64.tar.gz \
+    && usermod --login ${USERNAME} ${OLD_USERN} \
+    && usermod --uid ${USER_UID} --home /home/${USERNAME} --move-home ${USERNAME} \
+    && groupmod -n ${USERNAME} ${OLD_USERN} \
+    && chown -R ${USER_UID}:${USER_GID} /home/${USERNAME} \
+    && chmod -R u+rx /home/${USERNAME} \
+    && go install -v golang.org/x/tools/gopls@latest \
     && go install github.com/wailsapp/wails/v2/cmd/wails@latest 
+
+USER ${USERNAME}
+
+# groupadd --system --gid $USER_GID $USERNAME \
+    # && useradd --system --uid $USER_UID --gid $USER_GID -m $USERNAME \
 
 # [Optional] Uncomment if you want to install an additional version of node using nvm
 # ARG EXTRA_NODE_VERSION=10

@@ -14,8 +14,6 @@ ARG USER_GID=$USER_UID
 RUN groupadd --system --gid $USER_GID $USERNAME \
     && useradd --system --uid $USER_UID --gid $USER_GID -m $USERNAME \
     && chown -R $USER_UID:$USER_GID /home/$USERNAME \
-    && echo $USERNAME ALL=\(root\) NOPASSWD:ALL > /etc/sudoers.d/$USERNAME \
-    && chmod 0440 /etc/sudoers.d/$USERNAME \
     && chmod -R u+rx /home/$USERNAME
 USER $USERNAME
 

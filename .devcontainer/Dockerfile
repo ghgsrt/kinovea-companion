@@ -5,30 +5,20 @@ FROM mcr.microsoft.com/vscode/devcontainers/typescript-node:0-${VARIANT}
 # [Optional] Uncomment this section to install additional OS packages.
 RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
     && apt-get -y install --no-install-recommends wget software-properties-common apt-transport-https && apt-get update \
-    # && add-apt-repository ppa:longsleep/golang-backports && apt-get update \
-    # && apt-get install golang-1.18
     && wget https://go.dev/dl/go1.19.2.linux-amd64.tar.gz \
     && rm -rf /usr/local/go && tar -C /usr/local -xzf go1.19.2.linux-amd64.tar.gz
-    # && sudo mv go /usr/local \ 
-    # && export GOROOT=/usr/local/go \
-    # && export GOPATH=$HOME/go \
-    # && export PATH=$GOPATH/bin:$GOROOT/bin:$PATH \ 
-    # && source ~/.bashrc
-    # && apt-get -y install --no-install-recommends curl && apt-get update && curl 
-
 
 ARG USERNAME=node
 ARG USER_UID=1000
 ARG USER_GID=$USER_UID
-
 RUN groupmod --gid $USER_GID $USERNAME \
     && usermod --uid $USER_UID --gid $USER_GID $USERNAME \
-    && chown -R $USER_UID:$USER_GID /home/$USERNAME
+    && chown -R $USER_UID:$USER_GID /home/$USERNAME \
+    && chmod -R u+rX /home/$USERNAME
 
 ENV GOROOT /usr/local/go
 ENV GOPATH /home/node/go
 ENV PATH $GOPATH/bin:$GOROOT/bin:$PATH
-# ENV PATH $PATH:/usr/local/go/bin
 
 RUN go install -v golang.org/x/tools/gopls@latest \
     && go install github.com/wailsapp/wails/v2/cmd/wails@latest 

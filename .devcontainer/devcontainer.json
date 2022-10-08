@@ -50,7 +50,7 @@
 	},
 
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
-	// "forwardPorts": [],
+	"forwardPorts": [5173, 34115],
 
 	// Use 'postCreateCommand' to run commands after the container is created.
 	"postCreateCommand": "sh ./.devcontainer/scripts/postCreate.sh",

@@ -1,5 +1,5 @@
 name: Rebuild Base Image
-on:
+on: # Rebuild on slim/base.Dockerfile changes
   push:
     paths: 
       - .devcontainer/slim/base.Dockerfile

@@ -1,8 +1,8 @@
-name: Rebuild Base Image
-on: # rebuild on any .devcontainer changes
+name: Rebuild Slim Base Image
+on: # Rebuild on slim/base.Dockerfile changes
   push:
     paths: 
-      - .devcontainer/build/base.Dockerfile
+      - .devcontainer/slim/base.Dockerfile
     
 jobs:
   build:
@@ -19,7 +19,7 @@ jobs:
           password: ${{ secrets.GHCR_PASS }}
         
       - name: Build Base Image
-        run: docker build . --file .devcontainer/build/base.Dockerfile --tag ghcr.io/${{ github.repository_owner }}/gobase 
+        run: docker build . --file .devcontainer/slim/base.Dockerfile --tag ghcr.io/${{ github.repository_owner }}/gobase 
         
       - name: Push Base Image
         run: docker push ghcr.io/${{ github.repository_owner }}/gobase

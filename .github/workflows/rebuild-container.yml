@@ -1,8 +1,10 @@
 name: Rebuild Container Image
-on: # rebuild on Dockerfile changes
+on: # rebuild on any base.Dockerfile or Dockerfile changes
   push:
+    branches: [ master ]
     paths: 
-      - .devcontainer/build/Dockerfile
+      - .devcontainer/base.Dockerfile
+      - .devcontainer/Dockerfile
     
 jobs:
   build:
@@ -18,8 +20,8 @@ jobs:
           username: ${{ github.repository_owner }}
           password: ${{ secrets.GHCR_PASS }}
         
-      - name: Build Container Image
-        run: docker build . --file .devcontainer/build/Dockerfile --tag ghcr.io/${{ github.repository_owner }}/kc-devenv 
-        
-      - name: Push Container Image
-        run: docker push ghcr.io/${{ github.repository_owner }}/kc-devenv
+      - name: Build and Push Container Image
+        uses: devcontainers/ci@v0.2.1900000118
+        with:
+          imageName: ghcr.io/${{ github.repository }}
+          runCmd: cd . # no-op

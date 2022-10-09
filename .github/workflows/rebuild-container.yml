@@ -1,4 +1,4 @@
-name: Rebuild Dev Container Image
+name: Rebuild Container Image
 on: # rebuild on any base.Dockerfile or Dockerfile changes
   push:
     branches: [ master ]

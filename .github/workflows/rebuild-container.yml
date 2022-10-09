@@ -1,5 +1,5 @@
-name: Rebuild Dev-Env Image
-on: # rebuild on any .devcontainer changes
+name: Rebuild Dev Container Image
+on: # rebuild on any base.Dockerfile or Dockerfile changes
   push:
     branches: [ master ]
     paths: 

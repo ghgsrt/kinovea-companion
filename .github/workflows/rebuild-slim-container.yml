@@ -1,4 +1,4 @@
-name: Rebuild Container Image
+name: Rebuild Slim Container Image
 on: # rebuild on slim/Dockerfile changes
   push:
     paths: 

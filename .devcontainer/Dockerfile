@@ -7,22 +7,22 @@ RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
     && wget https://go.dev/dl/go1.19.2.linux-amd64.tar.gz \
     && rm -rf /usr/local/go && tar -C /usr/local -xzf go1.19.2.linux-amd64.tar.gz
 
-ARG OLD_USERN=node
-ARG USERNAME=kinovea
-ARG USER_UID=1337
-ARG USER_GID=${USER_UID}
+# ARG OLD_USERN=node
+# ARG USERNAME=kinovea
+# ARG USER_UID=1337
+# ARG USER_GID=${USER_UID}
 
-RUN usermod --uid ${USER_UID} --login ${USERNAME} --home /home/${USERNAME} --move-home ${OLD_USERN} \
-    && groupmod --gid ${USER_GID} --new-name ${USERNAME} ${OLD_USERN} \
-    && chown -R ${USER_UID}:${USER_GID} /home/${USERNAME} \
-    && chmod -R u+rwx /home/${USERNAME} \
-    && echo "${USERNAME} ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/${USERNAME} \
-    && chmod 0440 /etc/sudoers.d/${USERNAME}
+# RUN usermod --uid ${USER_UID} --login ${USERNAME} --home /home/${USERNAME} --move-home ${OLD_USERN} \
+#     && groupmod --gid ${USER_GID} --new-name ${USERNAME} ${OLD_USERN} \
+#     && chown -R ${USER_UID}:${USER_GID} /home/${USERNAME} \
+#     && chmod -R u+rwx /home/${USERNAME} \
+#     && echo "${USERNAME} ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/${USERNAME} \
+#     && chmod 0440 /etc/sudoers.d/${USERNAME}
 
-USER ${USERNAME}
+# USER ${USERNAME}
 
 ENV GOROOT /usr/local/go
-ENV GOPATH /home/${USERNAME}/go
+ENV GOPATH /home/*/go
 ENV PATH ${GOPATH}/bin:${GOROOT}/bin:${PATH}
 
 RUN go install -v golang.org/x/tools/gopls@latest \

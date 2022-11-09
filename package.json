@@ -22,7 +22,6 @@
 	},
 	"lint-staged": {
 		"**/*": [
-			"gts lint",
 			"prettier --write --ignore-unknown"
 		]
 	}

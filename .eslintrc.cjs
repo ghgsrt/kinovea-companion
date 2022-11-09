@@ -8,7 +8,7 @@ module.exports = {
 		'*.cjs',
 		'*.d.ts',
 		'*.css',
-		'*.json*',
+		'*.json',
 		'**/example.spec.ts',
 		'**/demo-todo-app.spec.ts',
 		'**/vite-env.d.ts',

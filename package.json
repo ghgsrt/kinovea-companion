@@ -21,7 +21,8 @@
 		"posttest": "npm.cmd run lint"
 	},
 	"lint-staged": {
-		"**/*": [
+		"**/*.{ts,svelte}": [
+			"npm run lint",
 			"prettier --write --ignore-unknown"
 		]
 	}

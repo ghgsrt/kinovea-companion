@@ -1,0 +1,22 @@
+{
+	"recommendations": [
+		// "dbaeumer.vscode-eslint",
+		"svelte.svelte-vscode",
+		"golang.go",
+		"formulahendry.auto-rename-tag",
+		"aaron-bond.better-comments",
+		"wayou.vscode-todo-highlight",
+		"vscode-icons-team.vscode-icons",
+		"kamikillerto.vscode-colorize",
+		"pranaygp.vscode-css-peek",
+		"eamodio.gitlens",
+		"wix.vscode-import-cost",
+		"visualstudioexptteam.intellicode-api-usage-examples",
+		"christian-kohler.path-intellisense",
+		"esbenp.prettier-vscode",
+		"ardenivanov.svelte-intellisense",
+		"csstools.postcss",
+		"tlahmann.alex-linter"
+		// "editorconfig.editorconfig"
+	]
+}

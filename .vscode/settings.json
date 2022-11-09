@@ -1,0 +1,6 @@
+{
+	"go.inlayHints.parameterNames": true,
+	"[**]": {
+		"editor.formatOnSave": true
+	}
+}

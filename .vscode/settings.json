@@ -1,6 +1,23 @@
 {
-	"go.inlayHints.parameterNames": true,
 	"[**]": {
 		"editor.formatOnSave": true
-	}
+	},
+	"[javascript]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode"
+	},
+	"[typescripts]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode"
+	},
+	"[svelte]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode"
+	},
+	"todohighlight.keywords": [
+		{
+			"text": "go:embed",
+			"color": "white",
+			"backgroundColor": "#00aed8",
+			"overviewRulerColor": "gray"
+		}
+	],
+	"go.inlayHints.parameterNames": true
 }

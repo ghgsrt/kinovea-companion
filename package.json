@@ -9,6 +9,7 @@
 		"prettier-plugin-svelte": "^2.8.0"
 	},
 	"scripts": {
+		"prepare": "husky install",
 		"lint": "gts lint",
 		"clean": "gts clean",
 		"compile": "tsc",
@@ -18,7 +19,6 @@
 	},
 	"lint-staged": {
 		"**/*.{ts,svelte}": [
-			"npm run lint",
 			"prettier --write --ignore-unknown"
 		]
 	}

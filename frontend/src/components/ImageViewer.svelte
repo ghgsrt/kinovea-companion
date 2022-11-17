@@ -1,10 +1,9 @@
 <script lang="ts">
 	export let src: string;
-	let _src = src;
 </script>
 
 <div>
-	<img src={_src} alt="damn" />
+	<img {src} alt="damn" />
 </div>
 
 <style>

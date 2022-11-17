@@ -1,13 +1,11 @@
 <script lang="ts">
-	import {Svrollbar} from 'svrollbar';
+	import { Svrollbar } from 'svrollbar';
 	import Dashboard from './components/Dashboard.svelte';
-	let DankSvrollbar = Svrollbar;
-	let AppDashboard = Dashboard;
 </script>
 
 <main>
-	<DankSvrollbar />
-	<AppDashboard />
+	<Svrollbar />
+	<Dashboard />
 </main>
 
 <style>

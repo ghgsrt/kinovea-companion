@@ -23,7 +23,7 @@
 
 	let src = '';
 
-	let tabs = data.map(folder => {
+	let tabs = data.map((folder) => {
 		return {
 			name: folder.name,
 			loadProject: () => (src = folder.motion),
@@ -33,12 +33,12 @@
 
 <div>
 	<div>
-		<!-- svelte-ignore missing-declaration -->
 		<SideBar {tabs} />
 	</div>
 	<div>
-		<!-- svelte-ignore missing-declaration -->
-		<ImageViewer {src} />
+		{#if src}
+			<ImageViewer {src} />
+		{/if}
 	</div>
 	<hr />
 </div>

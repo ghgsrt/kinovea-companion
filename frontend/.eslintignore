@@ -1,0 +1,13 @@
+node_modules/
+/test-results/
+/playwright-report/
+/playwright/.cache/
+/tests/
+/tests-examples/
+/wailsjs/
+/build/
+*.js
+*.cjs
+*.config.ts
+/src/vite-env.d.ts
+/src/main.ts

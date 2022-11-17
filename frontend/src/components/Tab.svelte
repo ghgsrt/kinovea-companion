@@ -4,16 +4,16 @@
 		loadProject: () => string;
 		setActive: () => void;
 	};
+	// let tab = tab;
 </script>
 
-<!-- svelte-ignore missing-declaration -->
 <li
 	on:click={() => {
-		tab.loadProject();
-		tab.setActive();
+		tab?.loadProject();
+		tab?.setActive();
 	}}
 >
-	<p>{tab.name}</p>
+	<p>{tab?.name}</p>
 </li>
 
 <style>

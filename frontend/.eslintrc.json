@@ -1,0 +1,36 @@
+{
+	"root": true,
+	"parser": "@typescript-eslint/parser",
+	"parserOptions": {
+		"project": ["./frontend/tsconfig.json"],
+		"ecmaVersion": 9,
+		"sourceType": "module"
+	},
+	"settings": {
+		"import/core-modules": ["svelte"]
+	},
+	"rules": {
+		"import/no-extraneous-dependencies": [
+			"error",
+			{ "devDependencies": true }
+		],
+		"import/no-mutable-exports": 0,
+		"no-labels": 0,
+		"no-restricted-syntax": 0,
+		"react/jsx-filename-extension": 0 // just to shut up dumb errors
+	},
+	"plugins": ["@typescript-eslint", "svelte3", "import"],
+	"extends": [
+		"airbnb-typescript",
+		"plugin:@typescript-eslint/recommended",
+		"plugin:eslint-comments/recommended",
+		"plugin:promise/recommended",
+		"prettier"
+	],
+	"overrides": [
+		{
+			"files": ["**/*.svelte"],
+			"processor": "svelte3/svelte3"
+		}
+	]
+}

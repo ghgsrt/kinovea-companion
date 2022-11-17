@@ -17,7 +17,7 @@
 		"import/no-mutable-exports": 0,
 		"no-labels": 0,
 		"no-restricted-syntax": 0,
-		"react/jsx-filename-extension": 0 // just to shut up dumb errors
+		"react/jsx-filename-extension": 0 // just to shut up an airbnb related error
 	},
 	"plugins": ["@typescript-eslint", "svelte3", "import"],
 	"extends": [

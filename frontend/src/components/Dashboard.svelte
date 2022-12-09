@@ -111,6 +111,7 @@
 
 	input {
 		width: 100%;
+		position: absolute;
 	}
 
 	hr {

@@ -1,43 +1,76 @@
 <script lang="ts">
 	import SideBar from './SideBar.svelte';
-	import ImageViewer from './ImageViewer.svelte';
-	import path1 from '../assets/images/path1.webp';
-	import path2 from '../assets/images/path2.jpg';
+	// import ImageViewer from './ImageViewer.svelte';
+	// import path1 from '../assets/images/path1.webp';
+	// import path2 from '../assets/images/path2.jpg';
+	// import { GetData } from '../../wailsjs/go/main/App';
+	import CsvViewer from './CsvViewer.svelte';
 
-	let data: Array<{
-		name: string;
-		motion: string;
-		force: string;
-	}> = [
-		{
-			name: 'boy_jump',
-			motion: path1,
-			force: '...path3.fck',
-		},
-		{
-			name: 'girl_jump',
-			motion: path2,
-			force: '...path4.fck',
-		},
-	];
+	// let data: Array<{
+	// 	name: string;
+	// 	motion: string;
+	// 	force: string;
+	// }> = [
+	// 	{
+	// 		name: 'boy_jump',
+	// 		motion: path1,
+	// 		force: '...path3.fck',
+	// 	},
+	// 	{
+	// 		name: 'girl_jump',
+	// 		motion: path2,
+	// 		force: '...path4.fck',
+	// 	},
+	// ];
 
-	let src = '';
+	// let tabs = data.map((folder) => {
+	// 	return {
+	// 		name: folder.name,
+	// 		loadProject: () => (src = folder.motion),
+	// 	};
+	// });
 
-	let tabs = data.map((folder) => {
-		return {
-			name: folder.name,
-			loadProject: () => (src = folder.motion),
-		};
-	});
+	// let tabNames = ['Motion', 'Force'];
+	// GetData().then((data: CsvFile[]) => {
+	// 	console.log(`CsvFile Data: ${data}`);
+	// 	if (!data) return;
+	// 	tabs = tabNames.map((name, i) => ({
+	// 		name,
+	// 		loadProject: () => (file = data[i]),
+	// 	}));
+	// });
+
+	const tabs: Tab[] = [];
+	// const tabNames: string[] = [];
+	let files: FileList;
+	let file: File;
+
+	const updateTabs = () => {
+		console.log('Updating Tabs: ', files);
+		if (!files) return;
+
+		for (let i = 0; i < files.length; i++) {
+			tabs.push({
+				name: files[0].name,
+				loadProject: () => (file = files[0]),
+			});
+		}
+	};
+
+	$: files, updateTabs();
 </script>
 
 <div>
 	<div>
-		<SideBar {tabs} />
+		<input type="file" bind:files />
+		{#if tabs.length > 0}
+			<SideBar {tabs} />
+		{/if}
 	</div>
 	<div>
-		{#if src}
-			<ImageViewer {src} />
+		{#if file}
+			<!-- <ImageViewer {src} /> -->
+			<CsvViewer {file} />
 		{/if}
 	</div>
 	<hr />

@@ -16,7 +16,7 @@ func main() {
 
 	// Create application with options
 	err := wails.Run(&options.App{
-		Title:            "Interaction System",
+		Title:            "Data Dungeon",
 		Width:            1024,
 		Height:           768,
 		Assets:           assets,
@@ -30,4 +30,7 @@ func main() {
 	if err != nil {
 		println("Error:", err.Error())
 	}
+
+
+
 }

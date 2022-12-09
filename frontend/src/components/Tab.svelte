@@ -1,7 +1,7 @@
 <script lang="ts">
 	export let tab: {
 		name: string;
-		loadProject: () => string;
+		loadProject: () => void;
 		setActive: () => void;
 	};
 	// let tab = tab;

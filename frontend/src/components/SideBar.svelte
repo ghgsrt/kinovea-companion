@@ -1,10 +1,7 @@
 <script lang="ts">
-	import Tab from './Tab.svelte';
+	import TabC from './Tab.svelte';
 
-	export let tabs: {
-		name: string;
-		loadProject: () => string;
-	}[];
+	export let tabs: Tab[];
 
 	let activeTab: number | null = null;
 </script>
@@ -12,7 +9,7 @@
 <ul>
 	<!-- svelte-ignore missing-declaration -->
 	{#each tabs as tab, i}
-		<Tab tab={{...tab, setActive: () => (activeTab = i)}} />
+		<TabC tab={{ ...tab, setActive: () => (activeTab = i) }} />
 		<hr
 			style={`border-color: rgba(255, 166, 0, ${
 				activeTab === i ? 0.85 + ') !important' : 0.3 + ')'

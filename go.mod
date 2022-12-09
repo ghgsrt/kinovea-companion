@@ -1,4 +1,4 @@
-module changeme
+module dungeon
 
 go 1.18
 

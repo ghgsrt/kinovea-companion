@@ -41,6 +41,10 @@
 		"vitest": "^0.25.1"
 	},
 	"dependencies": {
+		"@observablehq/plot": "^0.6.0",
+		"chart.js": "^4.0.1",
+		"d3": "^7.7.0",
+		"svelte-chartjs": "^3.1.0",
 		"svelte-router-spa": "^6.0.3",
 		"svrollbar": "^0.12.0"
 	}

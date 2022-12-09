@@ -92,7 +92,7 @@
 		width: 100%;
 		display: flex;
 		justify-content: space-between;
-		background: rgb(219, 219, 219);
+		background: #e6e6a5;
 	}
 
 	div > div:first-child {

@@ -24,7 +24,7 @@
 
 	li {
 		list-style-type: none;
-		background: #282828;
+		background: rgb(219, 219, 219);
 		width: 100%;
 		margin-top: 2px;
 		cursor: pointer;
@@ -35,12 +35,17 @@
 	li:hover {
 		transition: scale 50ms ease-out;
 		scale: 1.15;
-		background: linear-gradient(to right, #363636 90%, #282828);
+		background: linear-gradient(
+			to right,
+			rgb(206, 206, 206) 90%,
+			rgb(219, 219, 219)
+		);
 	}
 
 	p {
-		color: white;
+		color: black;
 		text-decoration: none;
-		padding-right: 10%;
+		/* padding-right: 10%; */
+		padding-left: 7px;
 	}
 </style>

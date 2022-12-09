@@ -40,7 +40,7 @@
 	// 	}));
 	// });
 
-	const tabs: Tab[] = [];
+	let tabs: Tab[] = [];
 	// const tabNames: string[] = [];
 	let files: FileList;
 	let file: File;
@@ -49,23 +49,31 @@
 		console.log('Updating Tabs: ', files);
 		if (!files) return;
 
+		let _tabs = [];
 		for (let i = 0; i < files.length; i++) {
-			tabs.push({
-				name: files[0].name,
-				loadProject: () => (file = files[0]),
+			const loadProject = () => (file = files[i]);
+			_tabs.push({
+				name: files[i].name,
+				loadProject,
 			});
 		}
+
+		file = files[0];
+		tabs = _tabs;
 	};
 
 	$: files, updateTabs();
+	$: console.log('File: ' + file);
 </script>
 
 <div>
 	<div>
 		<input type="file" bind:files />
-		{#if tabs.length > 0}
+		<div>
+			<!-- {#if tabs.length > 0} -->
 			<SideBar {tabs} />
-		{/if}
+		</div>
+		<!-- {/if} -->
 	</div>
 	<div>
 		{#if file}
@@ -84,15 +92,25 @@
 		width: 100%;
 		display: flex;
 		justify-content: space-between;
-		background: #282828;
+		background: rgb(219, 219, 219);
 	}
 
 	div > div:first-child {
+		display: flex;
+		flex-direction: column;
 		width: var(--smallest-child);
+	}
+	div > div > div {
+		padding-left: 5px;
+		flex: 1;
 	}
 
 	div > div:not(:first-child) {
 		width: calc(100% - var(--smallest-child));
+	}
+
+	input {
+		width: 100%;
 	}
 
 	hr {
@@ -102,6 +120,8 @@
 		right: 0;
 		padding: 0;
 		margin: 0;
-		border-color: orange;
+		height: 2px;
+		background: red;
+		border-color: red;
 	}
 </style>

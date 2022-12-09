@@ -16,7 +16,7 @@ func main() {
 
 	// Create application with options
 	err := wails.Run(&options.App{
-		Title:            "Data Dungeon",
+		Title:            "Cool Analysis Games .net",
 		Width:            1024,
 		Height:           768,
 		Assets:           assets,

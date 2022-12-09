@@ -63,26 +63,11 @@
 	let loadedFile: CsvFile;
 	let data: Data;
 
-	// https://gist.github.com/Jezternz/c8e9fafc2c114e079829974e3764db75
-	// 	alternative --> https://stackoverflow.com/questions/8493195/how-can-i-parse-a-csv-string-with-javascript-which-contains-comma-in-data
-	const csvStringToArray = (strData: string): string[][] => {
-		const objPattern = new RegExp(
-			'(\\,|\\r?\\n|\\r|^)(?:"([^"]*(?:""[^"]*)*)"|([^\\,\\r\\n]*))',
-			'gi'
-		);
-		let arrMatches: RegExpExecArray | null;
-		let arrData: string[][] = [];
-		while ((arrMatches = objPattern.exec(strData))) {
-			if (arrMatches[1].length && arrMatches[1] !== ',') arrData.push([]);
-			arrData[arrData.length - 1].push(
-				arrMatches[2]
-					? arrMatches[2].replace(new RegExp('""', 'g'), '"')
-					: arrMatches[3]
-			);
-		}
-
-		return arrData;
-	};
+	const CsvToArray = (data: string, delimiter = ',', omitFirstRow = false) =>
+		data
+			.slice(omitFirstRow ? data.indexOf('\n') + 1 : 0)
+			.split('\n')
+			.map((v) => v.split(delimiter));
 
 	const generateDatasets = () => {
 		return loadedFile.headers.map((header, i) => ({
@@ -92,24 +77,54 @@
 		}));
 	};
 
+	const generateDemoDatasets = () => {
+		return [
+			{
+				...defaultOptions,
+				borderColor: 'red',
+				label: loadedFile.headers[3],
+				data: loadedFile.columns[3],
+			},
+			{
+				...defaultOptions,
+				borderColor: 'green',
+				label: loadedFile.headers[4],
+				data: loadedFile.columns[4],
+			},
+			{
+				...defaultOptions,
+				borderColor: 'orange',
+				label: loadedFile.headers[5],
+				data: loadedFile.columns[5],
+			},
+			{
+				...defaultOptions,
+				label: loadedFile.headers[6],
+				data: loadedFile.columns[6],
+			},
+		];
+	};
+
 	csvReader.addEventListener('load', (e: ProgressEvent<FileReader>) => {
-		console.log("Entering CsvReader Event: 'load'");
+		console.log("Entering CsvReader Event: 'load' " + fileAsStr);
 		fileAsStr = e.target?.result as string;
-		fileAsArr = csvStringToArray(fileAsStr);
+		fileAsArr = CsvToArray(fileAsStr);
 
 		loadedFile = {
-			headers: fileAsArr.shift()!!,
+			headers: fileAsArr?.shift() ?? [],
 			columns: fileAsArr,
 		};
 
 		data = {
-			labels: [], // no clue, prolly one of the file.columns
-			datasets: generateDatasets(),
+			labels: loadedFile.columns[1],
+			datasets: generateDemoDatasets(),
 		};
 
 		useShowJson(data);
 	});
 	csvReader.readAsText(file);
+
+	$: console.log(`Data: ${JSON.stringify(data)}`);
 </script>
 
 {#if data}

@@ -81,24 +81,25 @@
 		return [
 			{
 				...defaultOptions,
-				borderColor: 'red',
+				borderColor: 'teal',
 				label: loadedFile.headers[3],
 				data: loadedFile.columns[3],
 			},
 			{
 				...defaultOptions,
-				borderColor: 'green',
+				borderColor: '#FF9799',
 				label: loadedFile.headers[4],
 				data: loadedFile.columns[4],
 			},
 			{
 				...defaultOptions,
-				borderColor: 'orange',
+				borderColor: '#F9AC53',
 				label: loadedFile.headers[5],
 				data: loadedFile.columns[5],
 			},
 			{
 				...defaultOptions,
+				borderColor: '#8A7AFF',
 				label: loadedFile.headers[6],
 				data: loadedFile.columns[6],
 			},
